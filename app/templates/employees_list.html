@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  
+</head>
+
+<body>
+  {{msg}}
+  <table border="2">
+    <tr>
+      <th>Employee ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>E-mail</th>
+      <th>Phone Number</th>
+      <th>Hire Date</th>
+      <th>Job ID</th>
+      <th>Salary</th>
+      <th>Edit Employee</th>
+      <th>Delete Employee</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{i[0]}}</td>
+      <td>{{i[1]}}</td>
+      <td>{{i[2]}}</td>
+      <td>{{i[3]}}</td>
+      <td>{{i[4]}}</td>
+      <td>{{i[5]}}</td>
+      <td>{{i[6]}}</td>
+      <td>{{i[7]}}</td>
+      <td>
+        <form action="/edit" method="POST">
+          <input type="hidden" name="employee_id" value="{{i[0]}}" />
+          <input type="submit" value="Edit Employee" />
+        </form>
+      </td>
+      <td>
+        <form action="/delete" method="POST">
+          <input type="hidden" name="rip" value="{{i[0]}}" />
+          <input type="submit" value="Delete Employee" />
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+
+  </table>
+
+  <p><a href="/departmentslist">Back</a></p>
+</body>
+
+</html>
